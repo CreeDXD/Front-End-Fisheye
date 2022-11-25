@@ -1,27 +1,34 @@
-class PhotographerCard {
+class HeaderPhotographerCard {
     constructor(photographer) {
         this._photographer = photographer
     }
 
     createHeaderPhotographerCard() {
-        const $wrapper = document.createElement('article')
-        $wrapper.classList.add('photographe')
+        const infoPhotographe = document.createElement('article');
 
-        const photographerCard = `
-            
-        <a href="photographer.html?id=${this._photographer.id}">
-            <img
-                alt="${this._photographer.name}"
-                src="${this._photographer.portrait}"
-            />
-            <h2>${this._photographer.name}</h2>
-        </a>
-            
-        <p>${this._photographer.city}${this._photographer.country}</p>
-        <p>${this._photographer.price}€/jour</p>            
-        `
-        
-        $wrapper.innerHTML = photographerCard
-        return $wrapper
+        const infoName = document.createElement('h2');
+        infoName.textContent = this._photographer.name;
+
+        const infoCityCountry = document.createElement('h3');
+        infoCityCountry.textContent = this._photographer.city+' '+this._photographer.country;
+
+        const infoTagline = document.createElement('p');
+        infoTagline.textContent = this._photographer.tagline;
+
+        const infoPortrait = document.createElement('img');
+        infoPortrait.setAttribute("src", this._photographer.portrait);
+
+        const componentHeader = document.createElement('div');
+        componentHeader.setAttribute("class","componentHeader");
+        const button = document.querySelector(".contact_button");
+
+
+        infoPhotographe.appendChild(infoName);
+        infoPhotographe.appendChild(infoCityCountry);
+        infoPhotographe.appendChild(infoTagline);
+        componentHeader.appendChild(infoPhotographe);
+        componentHeader.appendChild(button);
+        componentHeader.appendChild(infoPortrait);
+        return componentHeader
     }
 }

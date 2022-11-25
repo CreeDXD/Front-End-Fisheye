@@ -1,11 +1,40 @@
 #contact_modal {
     display: none;
+    position:fixed;
+    z-index: 1;
+    left: 0;
+    top: 10px;
+    overflow: auto;
+    width: 100%;
+    height:100%;
+    border-radius: 5px;
 }
 
-.photograph-header {
+#input_text{
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.photograph-header{
+    margin-bottom:50px;
+}
+
+.componentHeader {
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    justify-self: center;
+    display: flex;
+    justify-content:space-around;
+    align-items:center;
+    flex-direction: row;
+}
+
+.componentHeader img{
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 7em;
 }
 
 .contact_button {
@@ -73,4 +102,65 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+.photos{
+    margin-bottom: 30px;
+}
+.photographe_main{
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-around;
+    align-items: center;
+    flex-direction: row;
+}
+.photographe_main article img{
+    width: 350px;
+    height:300px;
+    margin-bottom:10px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.photographe_main article video{
+    width: 350px;
+    height:300px;
+    margin-bottom:10px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.infoLikes{
+    display: flex;
+    flex-direction: row;
+}
+.infoLikes i{
+    margin-top:7px;
+    margin-left: 5px;
+    color: #901C1C;
+}
+.infoLikesTitles{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.infoLikesTitles p{
+    margin-left:3px;
+    margin-right:3px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    color:#901C1C;
+    font-weight:400;
+    size: 24px;
+    line-height:31.25px ;
+}
+.lightbox{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:100%;
+    z-index: 10;
+    background-color: #E5E5E5;
 }

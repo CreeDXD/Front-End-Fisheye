@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="/css/normalize.css">
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -15,8 +16,16 @@
     <main id="main">
         <div class="photographer_section"></div>
     </main>
-    <script src="scripts/factories/photographer.js"></script>
-    <script src="scripts/pages/index.js"></script>
-    <script src="scripts/utils/api.js"></script>
+    <!-- Models -->
+    <script src="/scripts/models/Photographer.js"></script>
+
+    <!-- Templates -->
+    <script src="/scripts/templets/PhotographerCard.js"></script>
+
+    <!-- Api -->
+    <script src="/scripts/api/Api.js"></script>
+
+    <!-- Entry point -->
+    <script src="/scripts/App.js"></script>  
   </body>
 </html>

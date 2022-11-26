@@ -1,18 +1,15 @@
 class App {
     constructor() {
         this.$photographerWrapper = document.querySelector('.photographer_section')
-        this.$mediaWrapper = document.querySelector('#main')
+        this.$mediaWrapper = document.querySelector('.photographe_main')
         this.$photographerheaderWrapper = document.querySelector('.photograph-header')
         this._idPhotographer = location.search.substring(4);
         this.photographersApi = new PhotographerApi('/data/photographers.json')
     }
 
     async main() {
-        const mediasData = await this.photographersApi.getMedias()
         const photographersData = await this.photographersApi.getPhotographers()
 
-        console.log(photographersData
-            .map(photographer => new Photographer(photographer)))
         photographersData
         .map(photographer => new Photographer(photographer))
         .forEach(photographer => {
@@ -22,36 +19,48 @@ class App {
          
     }
 
-    async pagePhotographer() {
-        const mediasData = await this.photographersApi.getMedias()
+    async pagePhotographerHeader() {
         const photographersData = await this.photographersApi.getPhotographers()
-        let test;
+        
+        let dataSelectedPhotographe
+
         photographersData.forEach(
             element => {
                 if(element.id == this._idPhotographer){
-                    console.log(element)
-                    test = element
+                    dataSelectedPhotographe = element
                 }   
             }
         )
-        const selectedPhotographe = new SelectedIdPhotographer(test)
+        const selectedPhotographe = new SelectedIdPhotographer(dataSelectedPhotographe)
 
         const Template = new HeaderPhotographerCard(selectedPhotographe)
-        this.$photographerheaderWrapper.appendChild(Template.createHeaderPhotographerCard())        
+        this.$photographerheaderWrapper.appendChild(Template.createHeaderPhotographerCard()) 
+    }
 
-        // photographersData
-        // .map(photographer => new Photographer(photographer))
-        // .forEach(photographer => {
-        //     const Template = new HeaderPhotographerCard(photographer)
-        //     this.$photographerheaderWrapper.appendChild(Template.createHeaderPhotographerCard())        
-        // })   
+    async pagePhotographerMedia() {
+        const mediasData = await this.photographersApi.getMedias()
+        const photographersData = await this.photographersApi.getPhotographers()
         
-        mediasData
-        .map(media => new OldMovie(media))
-        .forEach(media => {
-            const Template = new MovieCard(media)
-            this.$photographerWrapper.appendChild(Template.createMovieCard())        
-        })   
+        let name;
+        photographersData.forEach((photographe) =>{
+            if(photographe.id == this._idPhotographer){
+                name = photographe.name;
+            }       
+        })
+
+        let dataSelectedMedia =[]
+        mediasData.forEach(
+            element => {
+                if(element.photographerId == this._idPhotographer){
+                    const selectedMedia = new Media(element,name)
+                    const Template = new MediaCard(selectedMedia)
+                    this.$mediaWrapper.appendChild(Template.createMediaCard())                    
+                }
+            }
+        )
+
+       
+
     }
 }
 

@@ -11,8 +11,8 @@ class Media {
         this._video = data.video
 
     }
-    get video(){
-        return this._video
+    get video(){ 
+        return `/assets/photographers/${this._name}/${this._video}`
     }
     get name(){
         return this._name
@@ -33,7 +33,7 @@ class Media {
         return `/assets/photographers/${this._name}/${this._image}`
     }
     get likes(){
-        return this._country
+        return this._likes
     }
     get date(){
         return this._tagline

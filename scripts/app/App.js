@@ -41,14 +41,13 @@ class App {
         const mediasData = await this.photographersApi.getMedias()
         const photographersData = await this.photographersApi.getPhotographers()
         
-        let name;
+        let name
         photographersData.forEach((photographe) =>{
             if(photographe.id == this._idPhotographer){
                 name = photographe.name;
             }       
         })
 
-        let dataSelectedMedia =[]
         mediasData.forEach(
             element => {
                 if(element.photographerId == this._idPhotographer){

@@ -3,9 +3,12 @@ class App {
         this.$photographerWrapper = document.querySelector('.photographer_section')
         this.$mediaWrapper = document.querySelector('.photographe_main')
         this.$photographerheaderWrapper = document.querySelector('.photograph-header')
-        this.$likePriceWrapper = document.querySelector('.likePrice')
+        this.$likePriceWrapper = document.querySelector('#main')
         this._idPhotographer = location.search.substring(4);
         this.photographersApi = new PhotographerApi('/data/photographers.json')
+        this.addEventTrisPopularites = document.querySelector('.popularites')
+        this.addEventTrisdates = document.querySelector('.dates')
+        this.addEventTrisTitles = document.querySelector('.titles')
     }
 
     async main() {
@@ -52,27 +55,98 @@ class App {
             }       
         })
 
+        // récupération du nombre totla de likes
         let totalLikes= 0
+        let tabMedia = []
+        let likeTabMedia = []
+        let titleTabMedia = []
+        let compte = 0
         mediasData.forEach((media) => {
             if(media.photographerId == this._idPhotographer){
                 totalLikes += media.likes
+                tabMedia[compte] = media
+                likeTabMedia[compte] = media
+                titleTabMedia[compte] = media
+                compte++
             }
         })
-
-        mediasData.forEach(
+        
+        tabMedia.forEach(
             element => {
-                if(element.photographerId == this._idPhotographer){
-
-                    // affichage des medias (image et vidéo)
-                    const selectedMedia = new Media(element,name)
-                    const Template = new MediaCard(selectedMedia)
-                    this.$mediaWrapper.appendChild(Template.createMediaCard())                    
-                }
+                // affichage des medias (image et vidéo)
+                const selectedMedia = new Media(element,name)
+                const Template = new MediaCard(selectedMedia)
+                this.$mediaWrapper.appendChild(Template.createMediaCard())
             }
         )
+
         // affichage de prix et total like dans la section likesPirce
         const TemplateLikePrice = new LikePriceCard(totalLikes,price)
         this.$likePriceWrapper.appendChild(TemplateLikePrice.createLikePriceCard())
+        
+
+        function changeMediaOrderbyLikes(){
+            
+            const newLikeTabMedia = trisMediaFonctionByLikes(likeTabMedia)            
+            let toutLesImages = document.querySelectorAll('.photos')
+
+            for(const element of toutLesImages){
+                element.remove()
+            }
+
+            newLikeTabMedia.forEach(
+                element => {
+                    // affichage des medias (image et vidéo)
+                    const mediaWrappertest = document.querySelector('.photographe_main')
+                    const selectedMedia = new Media(element,name)
+                    const Template = new MediaCard(selectedMedia)
+                    mediaWrappertest.appendChild(Template.createMediaCard())
+
+                }
+            )
+
+        }
+
+        function changeMediaOrderbyDates(){    
+            let toutLesImages = document.querySelectorAll('.photos')
+            for(const element of toutLesImages){
+                element.remove()
+            }
+            tabMedia.forEach(
+                element => {
+                    // affichage des medias (image et vidéo)
+                    const mediaWrappertest = document.querySelector('.photographe_main')
+                    const selectedMedia = new Media(element,name)
+                    const Template = new MediaCard(selectedMedia)
+                    mediaWrappertest.appendChild(Template.createMediaCard())
+
+                }
+            )
+        }
+
+        function changeMediaOrderbyTitles(){
+            let newTitleTabMedia = trisMediaFonctionByTitles(titleTabMedia)
+
+            let toutLesImages = document.querySelectorAll('.photos')
+            for(const element of toutLesImages){
+                element.remove()
+            }
+
+            newTitleTabMedia.forEach(
+                element => {
+                    // affichage des medias (image et vidéo)
+                    const mediaWrappertest = document.querySelector('.photographe_main')
+                    const selectedMedia = new Media(element,name)
+                    const Template = new MediaCard(selectedMedia)
+                    mediaWrappertest.appendChild(Template.createMediaCard())
+
+                }
+            )
+        }
+        
+        this.addEventTrisPopularites.addEventListener("click",changeMediaOrderbyLikes);
+        this.addEventTrisdates.addEventListener("click", changeMediaOrderbyDates);
+        this.addEventTrisTitles.addEventListener("click", changeMediaOrderbyTitles);
     }
 
 }

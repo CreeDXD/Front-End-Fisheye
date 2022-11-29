@@ -4,7 +4,8 @@ class LikePriceCard {
         this._price = price
     }
     createLikePriceCard() {
-        const componentLikePrice = document.querySelector('.likePrice')
+        const componentLikePrice = document.createElement('section')
+        componentLikePrice.setAttribute("class","likePrice")
 
         const infoTotalLikes = document.createElement('p')
         infoTotalLikes.textContent = this._totalLikes

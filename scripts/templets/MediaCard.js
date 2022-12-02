@@ -8,14 +8,19 @@ class MediaCard{
         if(this._media.video.slice(-4) == '.mp4'){
             med = document.createElement( 'video' );
             med.setAttribute("src", this._media.video);
-            med.setAttribute("controls","controls");        
+            med.setAttribute("controls","controls");
+            med.setAttribute('class','media')       
         }       
         else{
             med = document.createElement( 'img' );
             med.setAttribute("src", this._media.image);
+            med.setAttribute('class','media')       
+
         }               
         
         const infoTitle = document.createElement('p');
+        infoTitle.setAttribute('class','infoTitle')
+        infoTitle.setAttribute('value', this._media.title);
         infoTitle.textContent = this._media.title;
         
         const infoLikes = document.createElement('div');
@@ -38,6 +43,7 @@ class MediaCard{
         infoLikesTitles.appendChild(infoTitle);
         infoLikesTitles.appendChild(infoLikes);
         component.appendChild(infoLikesTitles);
+
         return component
     }
 }

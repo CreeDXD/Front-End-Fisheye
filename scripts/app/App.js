@@ -9,6 +9,7 @@ class App {
         this.addEventTrisPopularites = document.querySelector('.popularites')
         this.addEventTrisdates = document.querySelector('.dates')
         this.addEventTrisTitles = document.querySelector('.titles')
+
     }
 
     async main() {
@@ -22,7 +23,6 @@ class App {
         })   
          
     }
-
     async pagePhotographerHeader() {
         const photographersData = await this.photographersApi.getPhotographers()
         
@@ -104,6 +104,7 @@ class App {
 
                 }
             )
+            lightbox.init()
 
         }
 
@@ -122,6 +123,8 @@ class App {
 
                 }
             )
+            lightbox.init()
+
         }
 
         function changeMediaOrderbyTitles(){
@@ -142,12 +145,52 @@ class App {
 
                 }
             )
+            lightbox.init()
+
         }
-        
+        lightbox.init()
+
         this.addEventTrisPopularites.addEventListener("click",changeMediaOrderbyLikes);
         this.addEventTrisdates.addEventListener("click", changeMediaOrderbyDates);
         this.addEventTrisTitles.addEventListener("click", changeMediaOrderbyTitles);
+        // function lightbox(){
+        //     let toutLesImages = document.querySelectorAll('.media')
+        //     let lightbox_content = document.querySelector('#main')
+        //     tabMedia.forEach(element => {
+        //         const selectedMedia = new Media(element,name)
+        //         const Templatelightbox = new LightboxCard(selectedMedia)
+        //         lightbox_content.appendChild(Templatelightbox.createLighboxCard())
+
+        //     })
+        //     const closebutton = document.querySelector('.fa-xmark')
+
+        //     function openLightbox(){
+        //         const lightbox = document.querySelector(".lightbox_content");
+        //         lightbox.style.display = "flex";
+                
+        //     }
+
+        //     toutLesImages.forEach(element => {
+        //         element.addEventListener("click",openLightbox)
+        //     })
+
+        //     function closeLightbox(){
+        //         const lightbox = document.querySelector(".lightbox_content");
+        //         lightbox.style.display = "none";
+        //     }
+
+        //     closebutton.addEventListener('click',closeLightbox)
+
+            
+
+
+
+
+            
+        // }
+        // lightbox()
     }
+
 
 }
 

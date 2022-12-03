@@ -1,6 +1,5 @@
 function trisMediaFonctionByLikes(data){
     data.sort(function(a,b){
-        console.log(a.title)
         return b.likes - a.likes
     })
     return data

@@ -6,13 +6,15 @@ class lightbox {
         const titles = Array.from(document.querySelectorAll('.infoTitle'))
         const galleryAdresses = gallerys.map(gal => gal.getAttribute('src'))
         const titlesValue = titles.map(gal => gal.getAttribute('value'))
-        links.forEach((element) => 
-                element.addEventListener('click', e=> {
-                e.preventDefault()
-                let infoTitleValue = element.querySelector('.infoTitle').getAttribute('value')
-                let imageSrc = element.querySelector('.media').getAttribute('src')
-                new lightbox(infoTitleValue,imageSrc,galleryAdresses,titlesValue)
-            })
+        links.forEach((element) => {
+                const media = element.querySelector('.media')
+
+                media.addEventListener('click', e=> {
+                    e.preventDefault()
+                    let infoTitleValue = element.querySelector('.infoTitle').getAttribute('value')
+                    let imageSrc = element.querySelector('.media').getAttribute('src')
+                    new lightbox(infoTitleValue,imageSrc,galleryAdresses,titlesValue)
+            })}
         )  
         
 
@@ -27,12 +29,10 @@ class lightbox {
     }
 
     closeLightbox(e){
-        console.log(this.element)
         this.element.remove()
     }
 
     next(){
-        console.log(this.titlesValue)
 
         let med = this.element.querySelector('.media')
         let title = this.element.querySelector('.infoTilteLightbox')

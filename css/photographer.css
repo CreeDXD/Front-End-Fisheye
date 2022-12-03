@@ -280,6 +280,10 @@ form input {
     min-width: 200px;
     height: 50px;
 }
+
+.fa-heart{
+    cursor: pointer;
+}
 /* .tris_photo  li:nth-of-type(2),
 .tris_photo  li:nth-of-type(3){
     display: none;

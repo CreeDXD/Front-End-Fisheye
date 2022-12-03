@@ -61,6 +61,7 @@ class App {
         let likeTabMedia = []
         let titleTabMedia = []
         let compte = 0
+
         mediasData.forEach((media) => {
             if(media.photographerId == this._idPhotographer){
                 totalLikes += media.likes
@@ -86,7 +87,11 @@ class App {
         
 
         function changeMediaOrderbyLikes(){
-            
+            // reset du nombre total de like dans la section infoTotalLikes
+            let elementTotalLikes = document.querySelector('.infoTotalLikes').getAttribute('value')
+            let totalLikes = document.querySelector('.infoTotalLikes')
+            totalLikes.innerHTML = elementTotalLikes+'<i class="fa-sharp fa-solid fa-heart"></i>'
+
             const newLikeTabMedia = trisMediaFonctionByLikes(likeTabMedia)            
             let toutLesImages = document.querySelectorAll('.photos')
 
@@ -105,10 +110,17 @@ class App {
                 }
             )
             lightbox.init()
+            incrementation.init()
 
         }
 
-        function changeMediaOrderbyDates(){    
+        function changeMediaOrderbyDates(){   
+
+            // reset du nombre total de like dans la section infoTotalLikes
+            let elementTotalLikes = document.querySelector('.infoTotalLikes').getAttribute('value')
+            let totalLikes = document.querySelector('.infoTotalLikes')
+            totalLikes.innerHTML = elementTotalLikes+'<i class="fa-sharp fa-solid fa-heart"></i>'
+
             let toutLesImages = document.querySelectorAll('.photos')
             for(const element of toutLesImages){
                 element.remove()
@@ -124,10 +136,16 @@ class App {
                 }
             )
             lightbox.init()
-
+            incrementation.init()
         }
 
         function changeMediaOrderbyTitles(){
+
+            // reset du nombre total de like dans la section infoTotalLikes
+            let elementTotalLikes = document.querySelector('.infoTotalLikes').getAttribute('value')
+            let totalLikes = document.querySelector('.infoTotalLikes')
+            totalLikes.innerHTML = elementTotalLikes+'<i class="fa-sharp fa-solid fa-heart"></i>'
+            
             let newTitleTabMedia = trisMediaFonctionByTitles(titleTabMedia)
 
             let toutLesImages = document.querySelectorAll('.photos')
@@ -146,9 +164,13 @@ class App {
                 }
             )
             lightbox.init()
+            incrementation.init()
+
 
         }
         lightbox.init()
+        incrementation.init()
+
 
         this.addEventTrisPopularites.addEventListener("click",changeMediaOrderbyLikes);
         this.addEventTrisdates.addEventListener("click", changeMediaOrderbyDates);

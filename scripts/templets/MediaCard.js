@@ -27,6 +27,7 @@ class MediaCard{
         infoLikes.setAttribute("class","infoLikes");
 
         const numLikes = document.createElement('p');
+        numLikes.setAttribute('class','numLikes')
         numLikes.textContent = this._media.likes;   
         
         const infoLikesTitles = document.createElement('div');

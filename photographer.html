@@ -5,16 +5,38 @@
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7001e26a35.js" crossorigin="anonymous"></script>
     <title>Fisheye - photographe </title>
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html">
+        <img src="assets/images/logo.png" class="logo" />
+      </a>
+
     </header>
     <main id="main">
-      <div class="photograph-header">
+      <section class="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
-      </div>
+      </section>
+      <section class="tris_photo">
+        <p>Trier par</p>
+        <nav>
+          <ul class="hidden">
+            <li class="popularites">Popularité</li>
+            <li class="dates">Date</li>
+            <li class="titles">Titre</li>
+          </ul>
+        </nav>
+        <!-- <select name="tris" class="select_tri">
+          <option value="0">popularité</option>
+          <option value="0">date</option>
+          <option value="0">titre</option>
+        </select> -->
+      </section> 
+      
+
+      <section class="photographe_main"></section>
     </main>
     <div id="contact_modal">
 			<div class="modal">
@@ -31,7 +53,31 @@
 				</form>
 			</div>
 		</div>
-    <script src="/scripts/pages/photographer.js"></script>
+
+
+    <!-- api -->
+    <script src="/scripts/api/Api.js"></script>
+
+    <!-- app -->
+    <script src="/scripts/app/App.js"></script>
+    <script src="/scripts/app/AppPhotographeHeader.js"></script>
+    <script src="/scripts/app/AppPhotographeMedia.js"></script>
+    <script src="/scripts/app/lightbox.js"></script>
+    <script src="/scripts/app/IncrementationLikes.js"></script>
+
+
+    <!-- models -->
+    <script src="/scripts/models/SelectedIdPhotographer.js"></script>
+    <script src="/scripts/models/Media.js"></script>
+    
+    <!-- templets -->
+    <script src="/scripts/templets/PhotographerCard.js"></script>
+    <script src="/scripts/templets/HeaderPhotographerCard.js"></script>
+    <script src="/scripts/templets/MediaCard.js"></script>
+    <script src="/scripts/templets/LikePriceCard.js"></script>
+
+    <!-- utils -->
     <script src="/scripts/utils/contactForm.js"></script>
+    <script src="/scripts/utils/TrisMediasFunction.js"></script>
   </body>
 </html>

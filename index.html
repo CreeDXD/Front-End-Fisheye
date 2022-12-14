@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
     <meta charset="utf-8">
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
@@ -9,13 +10,23 @@
   </head>
   <body>
     <header>
-        <img src="assets/images/logo.png" class="logo" />
+        <img src="assets/images/logo.png" class="logo" alt="logo">
         <h1>Nos photographes</h1>
     </header>
     <main id="main">
         <div class="photographer_section"></div>
     </main>
-    <script src="scripts/factories/photographer.js"></script>
-    <script src="scripts/pages/index.js"></script>
+    <!-- Models -->
+    <script src="/scripts/models/Photographer.js"></script>
+
+    <!-- Templates -->
+    <script src="/scripts/templets/PhotographerCard.js"></script>
+
+    <!-- Api -->
+    <script src="/scripts/api/Api.js"></script>
+
+    <!-- Entry point -->
+    <script src="/scripts/app/App.js"></script>  
+    <script src="/scripts/app/AppIndex.js"></script>  
   </body>
 </html>

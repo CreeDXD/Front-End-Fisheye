@@ -10,6 +10,7 @@ class HeaderPhotographerCard {
 
 
         const infoName = document.createElement('h2');
+        infoName.setAttribute('class','name')
         infoName.textContent = this._photographer.name;
 
         const infoCityCountry = document.createElement('h3');

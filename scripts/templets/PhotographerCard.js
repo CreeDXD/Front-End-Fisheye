@@ -19,7 +19,8 @@ class PhotographerCard {
             <h2>${this._photographer.name}</h2>
         </a>
             
-        <p>${this._photographer.city}${this._photographer.country}</p>
+        <h3>${this._photographer.city}${this._photographer.country}</h3>
+        <p>${this._photographer.tagline}</p>
         <p>${this._photographer.price}€/jour</p>            
         `
         
